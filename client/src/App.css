@@ -1,0 +1,42 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center
+}
+
+.information input {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.information label {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+button {
+  width: 319px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.employees {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: aqua;
+}
+
