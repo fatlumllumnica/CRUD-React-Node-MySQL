@@ -23,7 +23,7 @@
   margin-bottom: 5px;
   font-size: 18px;
 }
-button {
+.information button {
   width: 319px;
   height: 50px;
   margin-bottom: 20px;
@@ -37,6 +37,38 @@ button:hover {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  background-color: aqua;
 }
+.employees button{
+    width: 319px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.employee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid blue;
+  border-radius: 10px;
+  width: 30%;
+}
+.employess {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+span {
+  color: red;
+  font-weight: bold;  
+}
+li {
+  
+}
+.update {
+ align-self: flex-end;
+ padding-right: 0px;
+}
+
+
 

@@ -6,10 +6,13 @@ import Axios from 'axios';
 function App() {
 
   const [name, setName]= useState('');
-  const [age, setAge]= useState('');
+  const [age, setAge]= useState(0);
   const [country, setCountry]= useState('');
   const [position, setPosition]= useState('');
-  const [wage, setWage]= useState('');
+  const [wage, setWage]= useState(0);
+  
+
+  const[newwage, setNewWage]  = useState(0)
 
   const [employeesList, setEmployeesList] = useState([]);
 
@@ -28,7 +31,7 @@ function App() {
       setCountry('');
       setPosition('');
       setWage('');
-      
+
       setEmployeesList([
         ...employeesList, {
         name: name,
@@ -49,6 +52,22 @@ function App() {
     });
   };
   
+  const updateWage =(id) => {
+    Axios.put("http://localhost:3001/update", {wage:newwage, id:id})
+    .then ((response)=> {
+      setEmployeesList(employeesList.map((employ)=> {
+        return employ.id == id ? {id: employ.id, name: employ.name, age: employ.age, country: employ.country, position: employ.position, wage: newwage}: employ
+      }))
+      alert("updated");
+    });
+  };
+
+  const deleteEmployee =(id) => {
+  Axios.delete(`http://localhost:3001/delete/${id}`)
+  .then ((response) => {
+    getEmployees();
+  })
+  };
 
   return (
     <>
@@ -67,16 +86,31 @@ function App() {
       <button type='submit' onClick={addEmployee}>Add Employee </button>
     
     </div>
-    <hr/>
+    
 
       <div className='employees'>
       <button onClick={getEmployees}>Show Employees</button>
       </div>
 
-      <div>
+      <div className='employess'>
         {employeesList && employeesList.map((employ, key)=> {
-          return          (
-          <div key={key}> {employ.name} </div>
+          return(
+          <div className="employee" key={key}> 
+          <ul>
+          <li><span>Emri: </span> {employ.name}</li>
+          <li><span>Age: </span>{employ.age}</li>
+          <li><span>Country: </span>{employ.country}</li>
+          <li><span>Position: </span>{employ.position}</li> 
+          <li><span>Wage: </span>{employ.wage}</li>
+          </ul>
+          <div className='update'>
+          
+          <input type='text' placeholder='2000..' onChange={(e) => setNewWage(e.target.value)}/>
+          <button type='submit'onClick={()=>updateWage(employ.id)}>Update</button>
+          <button type='submit' onClick={()=>deleteEmployee(employ.id)}>Delete</button>
+          </div>
+        
+          </div>
           )
         })}
       </div>
