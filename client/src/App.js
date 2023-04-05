@@ -28,7 +28,18 @@ function App() {
       setCountry('');
       setPosition('');
       setWage('');
-    })
+      
+      setEmployeesList([
+        ...employeesList, {
+        name: name,
+        age: age, 
+        country: country, 
+        position:position, 
+        wage: wage,
+          },
+        ]);
+    });
+
   };
 
   const getEmployees = () => {
